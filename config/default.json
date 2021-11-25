@@ -1,0 +1,8 @@
+{	
+	"data_dir": "../data",
+	"output_dir":"../output",
+	"zipfiles": ["reviews_Musical_Instruments_5.json.gz"],
+	"doc_files": ["reviews_Musical_Instruments_5_total.txt"],
+	"quality_file": "wiki_quality.txt",
+	"number":100
+}
