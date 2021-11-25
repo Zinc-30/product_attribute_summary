@@ -1,5 +1,5 @@
-# product_attribute_summary
-This repository contains some basic methods for product automatic attributes discovery and summary
+# Product Review Based Keyphrase Extraction and Summary
+This repository contains some basic methods for Keyphrase Extraction currently
 
 ## Data preprocess
 
