@@ -6,10 +6,6 @@ import json
 
 
 
-def mkdir(path):
-    folder = os.path.exists(path)
-    if not folder:
-        os.makedirs(path)
 
 def TopicRank(config):
     doc_files = config['doc_files']
@@ -22,8 +18,7 @@ def TopicRank(config):
         extractor.candidate_selection()
         extractor.candidate_weighting()
         keyphrases = extractor.get_n_best(n=num)
-        mkdir(str(path_out.joinpath('topicrank/')))
-        with open(str(path_out.joinpath('topicrank/')) + '/{}.keywords'.format(file_name), 'w') as file:
+        with open(str(path_out) + '/{}_topicrank.keywords'.format(file_name), 'w') as file:
             json.dump({file_name: keyphrases}, file)
     
 
