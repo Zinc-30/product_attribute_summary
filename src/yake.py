@@ -25,7 +25,8 @@ def yake(config, stoplist):
         keyphrases = extractor.get_n_best(num, threshold=0.8, redundancy_removal=True)
         mkdir(str(output_dir.joinpath('yake/')))
         with open(str(output_dir.joinpath('yake/')) + '/{}.keywords'.format(file_name), 'w') as file:
-            json.dump({file_name: keyphrases}, file)
+            for phrase in keyphrases:
+                file.write(str(phrase) + '\n')
 
 if __name__ == '__main__':
     config_file = '../config/default.json'

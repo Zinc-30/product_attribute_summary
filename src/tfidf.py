@@ -28,7 +28,8 @@ def tfidf(config, stoplist=list(string.punctuation)):
         keyphrases = extractor.get_n_best(num, redundancy_removal=True)
         mkdir(str(path_out.joinpath('tfidf/')))
         with open(str(path_out.joinpath('tfidf/')) + '/{}.keywords'.format(file_name), 'w') as file:
-            json.dump({file_name: keyphrases}, file)
+            for phrase in keyphrases:
+                file.write(str(phrase) + '\n')
     shutil.rmtree(path_out.joinpath('tfidf_source/'))
 
 def caculate_freq(config, stoplist=list(string.punctuation)):
@@ -42,7 +43,9 @@ def caculate_freq(config, stoplist=list(string.punctuation)):
     pke.compute_document_frequency(str(input_total), str(out_freq), extension='txt',
                                    language='en',
                                    normalization=None,
-                                   stoplist=stoplist, n=3)
+                                   stoplist=stoplist,
+                                   max_length=5100000,
+                                   n=3)
 
 
 if __name__ == '__main__':
