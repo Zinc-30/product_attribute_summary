@@ -12,8 +12,9 @@ def TopicRank(config):
     path = Path(config['data_dir'])
     path_out = Path(config['output_dir'])
     num = config['number']
-    extractor = pke.unsupervised.TopicRank()
+ 
     for file_name in tqdm.tqdm(doc_files):
+        extractor = pke.unsupervised.TopicRank()
         extractor.load_document(input=str(path.joinpath(file_name)), language='en')
         extractor.candidate_selection()
         extractor.candidate_weighting()
