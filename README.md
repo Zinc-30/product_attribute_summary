@@ -1,4 +1,4 @@
-# Product Review Based Keyphrase Extraction and Summary
+# Product Review Based Keyphrase Extraction
 This repository contains some basic methods for Keyphrase Extraction currently
 
 ## Data preprocess
