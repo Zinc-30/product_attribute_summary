@@ -71,7 +71,7 @@ def bpref(gt_list, pred_list, topk=None):   # Binary Preference Measure
             for idx, keyphrase in enumerate(doc, start=1):
                 if idx > topk:
                     break
-                if keyphrase in gt_list:
+                elif keyphrase in gt_list:
                     s += 1 - non_ingt / len(doc)
                     r += 1
                 else:
