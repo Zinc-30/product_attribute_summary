@@ -55,7 +55,13 @@ def ndcg_k_batch(actual, predicted, topk):
         
     return res / float(len(actual))
 
-def Bpref(gt_list, pred_list, topk=None):
+
+
+
+
+
+
+def bpref(gt_list, pred_list, topk=None):   # Binary Preference Measure 
     if isinstance(pred_list[0], list):
         doc_bpref = []
         for doc in pred_list:
@@ -93,7 +99,7 @@ def Bpref(gt_list, pred_list, topk=None):
             return 0.0
 
         
-def MAP(gt_list, pred_list, topk=None):
+def map(gt_list, pred_list, topk=None):   # Mean Average Precision
     total_precision = []
     if isinstance(pred_list[0], list):
         for doc in pred_list:
@@ -125,7 +131,7 @@ def MAP(gt_list, pred_list, topk=None):
     return np.mean(total_precision)
 
 
-def MRR(gt_list, pred_list):
+def mrr(gt_list, pred_list):     # Mean Reciprocal Rank
     s = 0
     if isinstance(pred_list[0], list):
         d = len(pred_list)
