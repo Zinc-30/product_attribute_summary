@@ -1,4 +1,5 @@
 import math
+import numpy as np
 
 
 def precision_at_k_per_record(actual, predicted, topk):
@@ -53,4 +54,91 @@ def ndcg_k_batch(actual, predicted, topk):
         res += ndcg_k_per_record(actual[record_id], predicted[record_id], topk)
         
     return res / float(len(actual))
+
+def Bpref(gt_list, pred_list, topk=None):
+    if isinstance(pred_list[0], list):
+        doc_bpref = []
+        for doc in pred_list:
+            non_ingt, s, r = 0, 0, 0
+            if topk == None:
+                topk = len(doc)
+            for idx, keyphrase in enumerate(doc, start=1):
+                if idx > topk:
+                    break
+                if keyphrase in gt_list:
+                    s += 1 - non_ingt / len(doc)
+                    r += 1
+                else:
+                    non_ingt += 1
+            if r != 0:
+                doc_bpref.append(s / r)
+            else:
+                doc_bpref.append(0.0)
+        return np.mean(doc_bpref)
+    else:
+        non_ingt, s, r = 0, 0, 0
+        if topk == None:
+            topk = len(pred_list)
+        for idx, keyphrase in enumerate(pred_list, start=1):
+            if idx > topk:
+                break
+            elif keyphrase in gt_list:
+                s += 1 - non_ingt / len(pred_list)
+                r += 1
+            else:
+                non_ingt += 1
+        if r != 0:
+            return s / r
+        else:
+            return 0.0
+
+        
+def MAP(gt_list, pred_list, topk=None):
+    total_precision = []
+    if isinstance(pred_list[0], list):
+        for doc in pred_list:
+            if topk == None:
+                topk = len(doc)
+            count = 0
+            doc_precision = []
+            for idx, keyphrase in enumerate(doc, start=1):
+                if idx > topk:
+                    break
+                elif keyphrase in gt_list:
+                    count += 1
+                    doc_precision.append(count / idx)
+            if doc_precision:
+                mean_doc_precision = np.mean(doc_precision)
+            else:
+                mean_doc_precision = 0.0
+            total_precision.append(mean_doc_precision)
+    else:
+        count = 0
+        if topk == None:
+            topk = len(pred_list)
+        for idx, keyphrase in enumerate(pred_list, start=1):
+            if idx > topk:
+                break
+            elif keyphrase in gt_list:
+                count += 1
+                total_precision.append(count / idx)
+    return np.mean(total_precision)
+
+
+def MRR(gt_list, pred_list):
+    s = 0
+    if isinstance(pred_list[0], list):
+        d = len(pred_list)
+        for doc in pred_list:
+            for idx, keyphrase in enumerate(doc, start=1):
+                if keyphrase in gt_list:
+                    s += 1 / idx
+                    break
+    else:
+        d = 1
+        for idx, keyphrase in enumerate(pred_list, start=1):
+            if keyphrase in gt_list:
+                s += 1 / idx
+                break
+    return s / d
 
