@@ -61,6 +61,20 @@ def ndcg_k_batch(actual, predicted, topk):
 
 
 
+def f1_at_k_per_record(actual, predicted, topk):  # F1 Score for one document
+    precision = precision_at_k_per_record(actual, predicted, topk)
+    recall = recall_at_k_per_record(actual, predicted, topk)
+    return 2 * precision * recall / (precision + recall)
+
+
+def f1_at_k_batch(actual, predicted, topk):     # Average F1 Score for all documents
+    sum_f1 = 0.0
+    num_records = len(predicted)
+    for i in range(num_records):
+        sum_f1 += f1_at_k_per_record(actual[i], predicted[i], topk)
+    return sum_f1 / num_records
+
+
 def bpref(gt_list, pred_list, topk=None):   # Binary Preference Measure 
         if isinstance(pred_list[0], list):
         doc_bpref = []
