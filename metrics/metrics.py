@@ -62,7 +62,7 @@ def ndcg_k_batch(actual, predicted, topk):
 
 
 def bpref(gt_list, pred_list, topk=None):   # Binary Preference Measure 
-    if isinstance(pred_list[0], list):
+        if isinstance(pred_list[0], list):
         doc_bpref = []
         for doc in pred_list:
             non_ingt, s, r = 0, 0, 0
@@ -71,8 +71,8 @@ def bpref(gt_list, pred_list, topk=None):   # Binary Preference Measure
             for idx, keyphrase in enumerate(doc, start=1):
                 if idx > topk:
                     break
-                elif keyphrase in gt_list:
-                    s += 1 - non_ingt / len(doc)
+                if keyphrase in gt_list:
+                    s += 1 - non_ingt / topk
                     r += 1
                 else:
                     non_ingt += 1
@@ -89,7 +89,7 @@ def bpref(gt_list, pred_list, topk=None):   # Binary Preference Measure
             if idx > topk:
                 break
             elif keyphrase in gt_list:
-                s += 1 - non_ingt / len(pred_list)
+                s += 1 - non_ingt / topk
                 r += 1
             else:
                 non_ingt += 1
