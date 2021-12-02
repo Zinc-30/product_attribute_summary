@@ -55,8 +55,8 @@ def eval(itemlist,methods):
                 for line in open(out_file):
                     out_list.append(line.strip())
                 out_list_pruned = selection(out_list)
-                row['ndcg_k_p'] = ndcg_k_batch(ans_list,out_list,5)
-                row['ndcg_k'] = ndcg_k_batch(ans_list,out_list_pruned,5)
+                row['bpref'] = ndcg_k_batch(ans_list,out_list)
+                row['bpref_p'] = ndcg_k_batch(ans_list,out_list_pruned)
                 row['mrr'] = mrr(ans_list, out_list)
                 row['mrr_p'] = mrr(ans_list, out_list_pruned)
                 row['p@5'] = precision_at_k_batch(ans_list, out_list,5)
