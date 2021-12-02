@@ -59,9 +59,15 @@ def ndcg_k_batch(actual, predicted, topk):
 
 
 
+def to_lowercase(input_list):                  # Convert all keyphrase to lower case
+    for i, s in enumerate(input_list):
+        input_list[i] = s.lower()
+    return input_list
 
 
 def f1_at_k_per_record(actual, predicted, topk):  # F1 Score for one document
+    actual = to_lowercase(actual)
+    predicted = to_lowercase(predicted)
     precision = precision_at_k_per_record(actual, predicted, topk)
     recall = recall_at_k_per_record(actual, predicted, topk)
     if precision + recall == 0:
@@ -79,6 +85,8 @@ def f1_at_k_batch(actual, predicted, topk):     # Average F1 Score for all docum
 
 
 def bpref(gt_list, pred_list, topk=None):   # Binary Preference Measure 
+    gt_list = to_lowercase(gt_list)
+    pred_list = to_lowercase(pred_list)
     if isinstance(pred_list[0], list):
         doc_bpref = []
         for doc in pred_list:
@@ -118,6 +126,8 @@ def bpref(gt_list, pred_list, topk=None):   # Binary Preference Measure
         
 def map(gt_list, pred_list, topk=None):   # Mean Average Precision
     total_precision = []
+    gt_list = to_lowercase(gt_list)
+    pred_list = to_lowercase(pred_list)
     if isinstance(pred_list[0], list):
         for doc in pred_list:
             if topk == None:
@@ -152,6 +162,8 @@ def map(gt_list, pred_list, topk=None):   # Mean Average Precision
 
 def mrr(gt_list, pred_list):     # Mean Reciprocal Rank
     s = 0
+    gt_list = to_lowercase(gt_list)
+    pred_list = to_lowercase(pred_list)
     if isinstance(pred_list[0], list):
         d = len(pred_list)
         for doc in pred_list:
