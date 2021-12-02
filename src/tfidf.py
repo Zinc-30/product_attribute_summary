@@ -27,7 +27,7 @@ def tfidf(config, stoplist=list(string.punctuation)):
         extractor.candidate_weighting(document_frequency)
         keyphrases = extractor.get_n_best(num, redundancy_removal=True)
         mkdir(str(path_out.joinpath('tfidf/')))
-        with open(str(path_out.joinpath('tfidf/')) + '/{}.keywords'.format(file_name), 'w') as file:
+        with open(str(path_out) + '/{}_tfidf.keywords'.format(file_name), 'w') as file:
             for phrase in keyphrases:
                 file.write(str(phrase) + '\n')
     shutil.rmtree(path_out.joinpath('tfidf_source/'))
