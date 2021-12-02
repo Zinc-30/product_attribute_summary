@@ -162,3 +162,7 @@ def mrr(gt_list, pred_list):     # Mean Reciprocal Rank
                 break
     return s / d
 
+if __name__=='__main__':
+    src = ["hello word","test data","computer game","west wood","greet game","good video games"]
+    tgt = ["test data","computer game","worth money", "cheap books","funny item"]
+    print(ndcg_k_batch(src,tgt,2))
