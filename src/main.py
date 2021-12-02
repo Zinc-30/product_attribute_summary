@@ -39,28 +39,30 @@ def eval(itemlist,methods):
         # print(ans_file)
         ans_list = []
         if os.path.exists(ans_file):
-
             row['item'] = item
-            for line in ans_file:
+            for line in open(ans_file):
                 ans_list.append(line.strip())
+            row['ans'] = ans_list
             # print(ans_list)
         else:
             continue
         for m in methods:
             out_file = "../output/reviews_Musical_Instruments_5_item_{}.txt_{}.keywords".format(item,m)
-            print(out_file)
+            # print(out_file)
             out_list = []
             if os.path.exists(out_file):
                 row['method'] = m
                 for line in open(out_file):
                     out_list.append(line.strip())
                 out_list_pruned = selection(out_list)
-                row['bpref'] = ndcg_k_batch(ans_list,out_list)
-                row['bpref_p'] = ndcg_k_batch(ans_list,out_list_pruned)
+                row['out'] = out_list
+                row['out_pruned'] = out_list_pruned
+                row['bpref'] = bpref(ans_list,out_list)
+                row['bpref_p'] = bpref(ans_list,out_list_pruned)
                 row['mrr'] = mrr(ans_list, out_list)
                 row['mrr_p'] = mrr(ans_list, out_list_pruned)
-                row['p@5'] = precision_at_k_batch(ans_list, out_list,5)
-                row['p_pruned@5'] = precision_at_k_batch(ans_list, out_list_pruned,5)
+                # row['p@1'] = precision_at_k_batch(ans_list, out_list,1)
+                # row['p_pruned@1'] = precision_at_k_batch(ans_list, out_list_pruned,1)
             else:
                 continue
         result.append(row)
