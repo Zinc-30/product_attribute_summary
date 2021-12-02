@@ -18,7 +18,7 @@ def kpminer(config, stoplist=list(string.punctuation)):
     path_out = Path(config['output_dir'])
     num = config['number']
     extractor = pke.unsupervised.KPMiner()
-    document_frequency = pke.load_document_frequency_file(str(path_out.joinpath('doc_freq.tsv.gz')))
+    document_frequency = pke.load_document_frequency_file(str(path_out.joinpath('kpminer_source/doc_freq.tsv.gz')))
     for file_name in tqdm.tqdm(config['doc_files']):
     #for file_name in tqdm.tqdm(path.glob('*.txt')):
         extractor.load_document(input=str(path.joinpath(file_name)), language='en', normalization=None)
@@ -26,7 +26,7 @@ def kpminer(config, stoplist=list(string.punctuation)):
         extractor.candidate_weighting(df=document_frequency, alpha=2.3, sigma=3.0)
         keyphrases = extractor.get_n_best(num, redundancy_removal=True)
         mkdir(str(path_out.joinpath('kpminer/')))
-        with open(str(path_out.joinpath('kpminer/')) + '/{}.keywords'.format(file_name), 'w') as file:
+        with open(str(path_out) + '/{}_kpminer.keywords'.format(file_name), 'w') as file:
             for phrase in keyphrases:
                 file.write(str(phrase) + '\n')
     shutil.rmtree(path_out.joinpath('kpminer_source/'))

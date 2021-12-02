@@ -24,7 +24,7 @@ def yake(config, stoplist):
         extractor.candidate_weighting(window=3, stoplist=stoplist)
         keyphrases = extractor.get_n_best(num, threshold=0.8, redundancy_removal=True)
         mkdir(str(output_dir.joinpath('yake/')))
-        with open(str(output_dir.joinpath('yake/')) + '/{}.keywords'.format(file_name), 'w') as file:
+        with open(str(output_dir) + '/{}_yake.keywords'.format(file_name), 'w') as file:
             for phrase in keyphrases:
                 file.write(str(phrase) + '\n')
 
