@@ -64,7 +64,10 @@ def ndcg_k_batch(actual, predicted, topk):
 def f1_at_k_per_record(actual, predicted, topk):  # F1 Score for one document
     precision = precision_at_k_per_record(actual, predicted, topk)
     recall = recall_at_k_per_record(actual, predicted, topk)
-    return 2 * precision * recall / (precision + recall)
+    if precision + recall == 0:
+        return 0.0
+    else:
+        return 2 * precision * recall / (precision + recall)
 
 
 def f1_at_k_batch(actual, predicted, topk):     # Average F1 Score for all documents
@@ -142,6 +145,8 @@ def map(gt_list, pred_list, topk=None):   # Mean Average Precision
             elif keyphrase in gt_list:
                 count += 1
                 total_precision.append(count / idx)
+        if not total_precision:
+            total_precision.append(0.0)
     return np.mean(total_precision)
 
 
