@@ -76,7 +76,7 @@ def f1_at_k_batch(actual, predicted, topk):     # Average F1 Score for all docum
 
 
 def bpref(gt_list, pred_list, topk=None):   # Binary Preference Measure 
-        if isinstance(pred_list[0], list):
+    if isinstance(pred_list[0], list):
         doc_bpref = []
         for doc in pred_list:
             non_ingt, s, r = 0, 0, 0
