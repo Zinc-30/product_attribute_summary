@@ -51,15 +51,15 @@ def selected_represent_phrase(clusters,rand):
         else:
             embs = torch.stack([get_cls_emb(p) for p in c], dim=0)
             centroid = torch.mean(embs, dim=0)
-            similarities = F.cosine_similarity(embs, centroid.unsqueeze(0).expand(embs.size()))
+            similarities = F.cosine_similarity(embs, centroid.unsqueeze(0).expand(embs.size()),2)
             idx = torch.topk(similarities, k=1).indices[0].item()
             ans.append([c[idx]])
     return ans
 
 def selection(phrase_list):
     clusters = cluster_phrases(phrase_list,0.6)
-    print(clusters)
-    pruned_list = selected_represent_phrase(clusters,True)
+    # print(clusters)
+    pruned_list = selected_represent_phrase(clusters,False)
     return pruned_list
 
 
