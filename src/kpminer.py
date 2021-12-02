@@ -18,7 +18,7 @@ def kpminer(config, stoplist=list(string.punctuation)):
     path_out = Path(config['output_dir'])
     num = config['number']
     extractor = pke.unsupervised.KPMiner()
-    document_frequency = pke.load_document_frequency_file(str(path_out.joinpath('doc_freq.tsv.gz')))
+    document_frequency = pke.load_document_frequency_file(str(path_out.joinpath('kpminer_source/doc_freq.tsv.gz')))
     for file_name in tqdm.tqdm(config['doc_files']):
     #for file_name in tqdm.tqdm(path.glob('*.txt')):
         extractor.load_document(input=str(path.joinpath(file_name)), language='en', normalization=None)
