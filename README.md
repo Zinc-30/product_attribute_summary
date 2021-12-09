@@ -1,20 +1,38 @@
-# Product Review Based Keyphrase Extraction
-This repository contains some basic methods for Keyphrase Extraction currently
+# Product Review Based Aspect Extraction
 
-## Data preprocess
+This repository contains some basic methods for Aspect Extraction, as denoted in `Step 1` of [this research statement](https://docs.google.com/document/d/1-VFgAocdmJcEejerQfkIt7-rvZtvd4RbJiCQA9kwT7k/edit#heading=h.73dv0fqsq2nq).
 
-put the zip and txt data in data folder
+## Directory structure
 
-## Code
+```
+.
+├── README.md
+├── config      # config files
+├── data        # compressed and decompressed txt data
+├── label       # manually attached labels to use as test set
+├── output      # generated output with file extension `*.keywords`
+└── src         # code
+```
 
-put the code files in src folder and each file represent an algorithm
+## Papers
 
-## Output
+id | paper | code
+--- | --- | ---
+autophrase | Shang et al., [Automated Phrase Mining from Massive Text Corpora](https://arxiv.org/abs/1702.04457), accepted by IEEE Transactions on Knowledge and Data Engineering, Feb. 2018 | https://github.com/luozhouyang/AutoPhraseX
+kea | Witten et al., [KEA: Practical Automatic Keyphrase Extraction](https://www.cs.waikato.ac.nz/ml/publications/2005/chap_Witten-et-al_Windows.pdf), 2005. | https://github.com/boudinfl/pke
+kpminer | El-Beltagy and Rafea, [KP-Miner: Participation in SemEval-2](https://aclanthology.org/S10-1041.pdf), 2010. | https://github.com/boudinfl/pke
+multipart | Boudin, [Unsupervised Keyphrase Extraction with Multipartite Graphs](https://arxiv.org/abs/1803.08721), NAACL 2018. | https://github.com/boudinfl/pke
+positionrank | Florescu and Caragea, [PositionRank: An Unsupervised Approach to Keyphrase Extraction from Scholarly Documents](https://aclanthology.org/P17-1102.pdf), ACL 2017. | https://github.com/boudinfl/pke
+singlerank | Wan and Xiao, [CollabRank: Towards a Collaborative Approach to Single-Document Keyphrase Extraction](https://aclanthology.org/C08-1122.pdf), 2008. | https://github.com/boudinfl/pke
+textrank | Mihalcea and Tarau, [TextRank: Bringing Order into Texts](https://aclanthology.org/W04-3252.pdf), 2004. | https://github.com/boudinfl/pke
+tfidf | - | https://github.com/boudinfl/pke
+topicalpagerank | Sterckx et al., [Topical Word Importance for Fast Keyphrase Extraction](http://users.intec.ugent.be/cdvelder/papers/2015/sterckx2015wwwb.pdf), 2015 | https://github.com/boudinfl/pke
+topicrank | Bougouin et al., [TopicRank: Graph-Based Topic Ranking for Keyphrase Extraction](https://aclanthology.org/I13-1062.pdf), 2013 | https://github.com/boudinfl/pke
+yake | Campos et al., [YAKE! Keyword extraction from single documents using multiple local features](https://www.sciencedirect.com/science/article/abs/pii/S0020025519308588?via%3Dihub), 2020 | https://github.com/boudinfl/pke
 
-the generated output should be in output file and ended with *.keywords*
+## Run
 
-## Config
-
-put the config files in the config folder, and you may create your own config files
-
-
+```
+pip install -r requirements.txt
+python src/main.py
+```
