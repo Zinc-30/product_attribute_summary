@@ -28,7 +28,7 @@ def tfidf(config, stoplist=list(string.punctuation)):
         keyphrases = extractor.get_n_best(num, redundancy_removal=True)
         with open(str(path_out) + '/{}_tfidf.keywords'.format(file_name), 'w') as file:
             for phrase in keyphrases:
-                file.write(str(phrase) + '\n')
+                file.write(str(phrase[0]).lower() + '\n')
     shutil.rmtree(path_out.joinpath('tfidf_source/'))
 
 def caculate_freq(config, stoplist=list(string.punctuation)):

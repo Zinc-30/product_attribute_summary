@@ -26,7 +26,7 @@ def yake(config, stoplist):
         mkdir(str(output_dir.joinpath('yake/')))
         with open(str(output_dir) + '/{}_yake.keywords'.format(file_name), 'w') as file:
             for phrase in keyphrases:
-                file.write(str(phrase) + '\n')
+                file.write(str(phrase[0]).lower() + '\n')
 
 if __name__ == '__main__':
     config_file = '../config/default.json'
