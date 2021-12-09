@@ -28,7 +28,7 @@ def kpminer(config, stoplist=list(string.punctuation)):
         mkdir(str(path_out.joinpath('kpminer/')))
         with open(str(path_out) + '/{}_kpminer.keywords'.format(file_name), 'w') as file:
             for phrase in keyphrases:
-                file.write(str(phrase[0]) + '\n')
+                file.write(str(phrase[0]).lower() + '\n')
     shutil.rmtree(path_out.joinpath('kpminer_source/'))
 
 def caculate_freq(config, stoplist=list(string.punctuation)):
