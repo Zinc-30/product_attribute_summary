@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="RemoteMappingsManager">
+    <list>
+      <list>
+        <remote-mappings server-id="python@sftp://hxinaa@lccpu25.cse.ust.hk:22/export/data/hxinaa/anaconda3/bin/python3">
+          <settings>
+            <list>
+              <mapping local-root="$PROJECT_DIR$/../product_attribute_summary&#9;/export/data/hxinaa/projects/product_attribute_summary" remote-root="/Users/xin/project/product_attribute_summary&#9;/export/data/product_attribute_summary" />
+            </list>
+          </settings>
+        </remote-mappings>
+      </list>
+    </list>
+  </component>
+</project>

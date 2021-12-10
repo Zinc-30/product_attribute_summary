@@ -26,10 +26,9 @@ def tfidf(config, stoplist=list(string.punctuation)):
         extractor.candidate_selection(n=3, stoplist=stoplist)
         extractor.candidate_weighting(document_frequency)
         keyphrases = extractor.get_n_best(num, redundancy_removal=True)
-        mkdir(str(path_out.joinpath('tfidf/')))
         with open(str(path_out) + '/{}_tfidf.keywords'.format(file_name), 'w') as file:
             for phrase in keyphrases:
-                file.write(str(phrase[0]) + '\n')
+                file.write(str(phrase[0]).lower() + '\n')
     shutil.rmtree(path_out.joinpath('tfidf_source/'))
 
 def caculate_freq(config, stoplist=list(string.punctuation)):
@@ -47,6 +46,14 @@ def caculate_freq(config, stoplist=list(string.punctuation)):
                                    max_length=5100000,
                                    n=3)
 
+def tfidf_main(config):
+    path = config['data_dir']
+    path_out = config['output_dir']
+    stoplist = list(string.punctuation)
+    caculate_freq(config, stoplist)
+    print('Using model: TFIDF')
+    tfidf(config, stoplist)
+    print('Finish model: TFIDF')
 
 if __name__ == '__main__':
     config_file = '../config/default.json'
