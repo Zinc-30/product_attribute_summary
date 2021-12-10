@@ -16,6 +16,8 @@ This repository contains some basic methods for Aspect Extraction, as denoted in
 
 ## Papers
 
+### Phrase extraction
+
 id | paper | code
 --- | --- | ---
 autophrase | Shang et al., [Automated Phrase Mining from Massive Text Corpora](https://arxiv.org/abs/1702.04457), accepted by IEEE Transactions on Knowledge and Data Engineering, Feb. 2018 | https://github.com/luozhouyang/AutoPhraseX
@@ -29,6 +31,15 @@ tfidf | - | https://github.com/boudinfl/pke
 topicalpagerank | Sterckx et al., [Topical Word Importance for Fast Keyphrase Extraction](http://users.intec.ugent.be/cdvelder/papers/2015/sterckx2015wwwb.pdf), 2015 | https://github.com/boudinfl/pke
 topicrank | Bougouin et al., [TopicRank: Graph-Based Topic Ranking for Keyphrase Extraction](https://aclanthology.org/I13-1062.pdf), 2013 | https://github.com/boudinfl/pke
 yake | Campos et al., [YAKE! Keyword extraction from single documents using multiple local features](https://www.sciencedirect.com/science/article/abs/pii/S0020025519308588?via%3Dihub), 2020 | https://github.com/boudinfl/pke
+
+
+### Aspect extraction
+
+id | paper | code
+--- | --- | ---
+mate | Angelidis and Lapata, [Summarizing Opinions: Aspect Extraction Meets Sentiment Prediction and They Are Both Weakly Supervised](https://aclanthology.org/D18-1403/), | https://github.com/stangelid/oposum
+acos | Cai et al., [Aspect-Category-Opinion-Sentiment Quadruple Extraction with Implicit Aspects and Opinions](https://aclanthology.org/2021.acl-long.29.pdf), ACL 2021 | https://github.com/NUSTM/ACOS
+
 
 ## Run
 
