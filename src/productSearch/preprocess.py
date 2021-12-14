@@ -10,7 +10,7 @@ import gzip
 from elasticsearch import Elasticsearch
 from elasticsearch import helpers
 
-es = Elasticsearch("localhost:9200")
+es = Elasticsearch("localhost:9201")
 product_file = "../../data/All_Amazon_Meta.json.gz"
 def timer(func):
     def wrapper(*args, **kwargs):
