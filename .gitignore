@@ -1,0 +1,4 @@
+*.log
+*.xml
+output/*.keywords
+data/*.json.gz
