@@ -2,3 +2,7 @@
 *.xml
 output/*.keywords
 data/*.json.gz
+*.pyc
+.idea
+.python-version
+
