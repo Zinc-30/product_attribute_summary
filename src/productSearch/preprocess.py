@@ -40,7 +40,8 @@ def es_parse_product():
             cleanx['details'] = {}
             for k in x['details']:
                 newk = k.strip().replace('.','_')
-                cleanx['details'][newk] = x['details'][k]
+                if len(newk)>0:
+                    cleanx['details'][newk] = x['details'][k]
         if 'title' in x:
             cleanx['title'] = x['title'].strip()
         if 'main_cat' in x:
