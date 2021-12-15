@@ -9,6 +9,7 @@ import json
 import gzip
 from elasticsearch import Elasticsearch
 from elasticsearch import helpers
+import copy
 
 es = Elasticsearch("localhost:9201")
 product_file = "../../data/All_Amazon_Meta.json.gz"
@@ -23,15 +24,36 @@ def timer(func):
 def es_parse_product():
     for l in gzip.open(product_file, 'r'):
         x = json.loads(l)
+        cleanx = {}
         if 'asin' in x:
             asin = x['asin']
+            cleanx['asin'] = asin
         else:
             continue
         if 'feature' in x:
+            cleanx['feature'] = []
             for phrases in x[u'feature']:
                 if len(phrases.split(" ")) > 5:
                     continue
-        yield {"_index": "amazon","_type":"product", "_id": asin , "_source": x}
+                cleanx['feature'].append(phrases)
+        if 'details' in x:
+            cleanx['details'] = {}
+            for k in x['details']:
+                newk = k.strip().replace('.','_')
+                cleanx['details'][newk] = x['details'][k]
+        if 'title' in x:
+            cleanx['title'] = x['title'].strip()
+        if 'main_cat' in x:
+            cleanx['main_cat'] = x['main_cat']
+        if 'price' in x and len(x['price'])>0:
+            cleanx['price'] = x['price']
+        if 'brand' in x and len(x['brand'])>0:
+            cleanx['brand'] = x['brand']
+        if 'category' in x:
+            cleanx['category'] = copy.deepcopy(x['category'])
+        if 'description' in x:
+            cleanx['description'] = copy.deepcopy(x['description'])
+        yield {"_index": "amazon","_type":"product", "_id": asin , "_source": cleanx}
 
 def es_parse_review(review_file):
     for l in gzip.open(review_file, 'r'):
