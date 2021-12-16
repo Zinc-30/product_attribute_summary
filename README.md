@@ -35,11 +35,11 @@ yake | Campos et al., [YAKE! Keyword extraction from single documents using mult
 
 ### Aspect extraction
 
-id | paper | code
---- | --- | ---
-mate | Angelidis and Lapata, [Summarizing Opinions: Aspect Extraction Meets Sentiment Prediction and They Are Both Weakly Supervised](https://aclanthology.org/D18-1403/), | https://github.com/stangelid/oposum
-acos | Cai et al., [Aspect-Category-Opinion-Sentiment Quadruple Extraction with Implicit Aspects and Opinions](https://aclanthology.org/2021.acl-long.29.pdf), ACL 2021 | https://github.com/NUSTM/ACOS
-
+id | paper | code |supervised
+--- | --- | --- | ---
+mate | Angelidis and Lapata, [Summarizing Opinions: Aspect Extraction Meets Sentiment Prediction and They Are Both Weakly Supervised](https://aclanthology.org/D18-1403/), | https://github.com/stangelid/oposum | semi-
+acos | Cai et al., [Aspect-Category-Opinion-Sentiment Quadruple Extraction with Implicit Aspects and Opinions](https://aclanthology.org/2021.acl-long.29.pdf), ACL 2021 | https://github.com/NUSTM/ACOS | yes
+cat |[Embarrassingly Simple Unsupervised Aspect Extraction](https://aclanthology.org/2021.acl-long.29.pdf), ACL 2020| https://aclanthology.org/2021.acl-long.29.pdf | no
 
 ## Run
 
