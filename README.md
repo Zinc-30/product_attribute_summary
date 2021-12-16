@@ -39,7 +39,7 @@ id | paper | code |supervised
 --- | --- | --- | ---
 mate | Angelidis and Lapata, [Summarizing Opinions: Aspect Extraction Meets Sentiment Prediction and They Are Both Weakly Supervised](https://aclanthology.org/D18-1403/), | https://github.com/stangelid/oposum | semi-
 acos | Cai et al., [Aspect-Category-Opinion-Sentiment Quadruple Extraction with Implicit Aspects and Opinions](https://aclanthology.org/2021.acl-long.29.pdf), ACL 2021 | https://github.com/NUSTM/ACOS | yes
-cat |[Embarrassingly Simple Unsupervised Aspect Extraction](https://aclanthology.org/2021.acl-long.29.pdf), ACL 2020| https://aclanthology.org/2021.acl-long.29.pdf | no
+cat |[Embarrassingly Simple Unsupervised Aspect Extraction](https://aclanthology.org/2020.acl-main.290.pdf), ACL 2020| https://github.com/clips/cat| no
 
 ## Run
 
