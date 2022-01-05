@@ -65,14 +65,52 @@ def es_parse_review(review_file):
             continue
         yield {"_index": "amazon", "_type": "review", "_source": x}
 
-
 def es_generator():
     for x in range(10):
         yield {"_index": "test","_type":"_doc", "_source": {"value": x}}
 @timer
 def main():
-    helpers.bulk(es, actions=es_parse_product())
+    helpers.bdulk(es, actions=es_parse_product())
+
+
+def get_prodcut_info_by_id(pid):
+    body = {'match': {'asin': pid}}
+    res = es.search(index="amazon", query=body)
+    ans = [x['_source'] for x in res['hits']['hits']][0]
+    return ans
+
+def domain_review():
+    """
+    generate a domain review set
+    select the reviews for the items in domain based on asin
+    :param reviewfile: the .gz file to extract reviews
+    :param domain: the product domain to extract
+    :return: a list of reviews
+    """
+
+    body = {'match': {'description': "Laptop keyboard"} and {'title': "keyboard"} and {"main_cat":"Computers"}}
+    res = es.search(index="amazon", query=body, size=1000)
+    keyboard_ids = [x['_source']['asin'] for x in res['hits']['hits']]
+    print(keyboard_ids)
+
+    body = {'match': {'description': "GB"} and {'title': "computer"} and {"main_cat": "Computers"} and {"brand":"apple lenovo HP Acer dell asus"}}
+    res = es.search(index="amazon", query=body, size=1000)
+    computer_ids = [x['_source']['asin'] for x in res['hits']['hits']]
+    print(computer_ids)
+    with open('../../data/keyboard_ids.txt','w') as f:
+        for id in keyboard_ids:
+            f.write(id+'\n')
+    with open('../../data/computer_ids.txt','w') as f:
+        for id in computer_ids:
+            f.write(id+'\n')
+
+
+
+
+
+
 
 if __name__ == '__main__':
-    main()
-    print(es.search(index="amazon",doc_type="product",query={"match":{"iphone"}}))
+    info = get_prodcut_info_by_id('B00WWIGLWY')
+    print(info)
+    domain_review()
