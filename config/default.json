@@ -1,8 +1,8 @@
 {	
 	"data_dir": "../data",
-	"output_dir":"../output",
-	"zipfiles": ["reviews_Musical_Instruments_5.json.gz"],
-	"doc_files": ["reviews_Musical_Instruments_5_total.txt"],
+	"output_dir":"../output/Clothing",
+	"zipfiles": ["Clothing_Shoes_and_Jewelry.json.gz"],
+	"doc_files": ["Clothing_Shoes_and_Jewelry_item_B00028AVDG.txt"],
 	"quality_file": "wiki_quality.txt",
 	"number":100
 }

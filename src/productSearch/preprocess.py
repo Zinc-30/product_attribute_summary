@@ -88,7 +88,7 @@ def domain_review():
     :return: a list of reviews
     """
 
-    body = {'match': {'description': "Laptop keyboard"} and {'title': "keyboard"} and {"main_cat":"Computers"}}
+    body = {'match': {'description': "Laptop keyboard"} and {'title': "keyboard"} and {"main_cat":"All Electronics"}}
     res = es.search(index="amazon", query=body, size=1000)
     keyboard_ids = [x['_source']['asin'] for x in res['hits']['hits']]
     print(keyboard_ids)
