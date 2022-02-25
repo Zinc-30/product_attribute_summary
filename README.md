@@ -37,10 +37,10 @@ yake | Campos et al., [YAKE! Keyword extraction from single documents using mult
 
 id | paper | code |supervised| result
 --- | --- | --- | --- | ---
-mate | Angelidis and Lapata, [Summarizing Opinions: Aspect Extraction Meets Sentiment Prediction and They Are Both Weakly Supervised](https://aclanthology.org/D18-1403/), | https://github.com/stangelid/oposum | semi-
+mate | Angelidis and Lapata, [Summarizing Opinions: Aspect Extraction Meets Sentiment Prediction and They Are Both Weakly Supervised](https://aclanthology.org/D18-1403/), | https://github.com/stangelid/oposum | semi- | ./result/mate.json
 acos | Cai et al., [Aspect-Category-Opinion-Sentiment Quadruple Extraction with Implicit Aspects and Opinions](https://aclanthology.org/2021.acl-long.29.pdf), ACL 2021 | https://github.com/NUSTM/ACOS | yes
 cat |[Embarrassingly Simple Unsupervised Aspect Extraction](https://aclanthology.org/2020.acl-main.290.pdf), ACL 2020| https://github.com/clips/cat| no
-AspMem | Chao Zhao and Snigdha Chaturvedi, [Weakly-Supervised Opinion Summarization by Leveraging External Information](https://ojs.aaai.org//index.php/AAAI/article/view/6512), | https://github.com/zhaochaocs/AspMem | no |
+AspMem | Chao Zhao and Snigdha Chaturvedi, [Weakly-Supervised Opinion Summarization by Leveraging External Information](https://ojs.aaai.org//index.php/AAAI/article/view/6512), AAAI 2020 | https://github.com/zhaochaocs/AspMem | no | ./result/aspmem.json
 
 ## Run
 
